@@ -35,9 +35,69 @@ import storyCreatorPortrait from './assets/images/story_creator_portrait_1790679
 import storyCoastalBay from './assets/images/story_coastal_bay_1790679927148.jpg';
 import lookbookSunsetPalm from './assets/images/lookbook_sunset_palm_1790679942722.jpg';
 import lookbookWovenLabel from './assets/images/lookbook_woven_label_1790679959868.jpg';
+import ClothingCarousel3D, { CarouselClothingItem } from './components/ClothingCarousel3D';
 
 const HERO_VIDEO_URL =
   'https://www.image2url.com/r2/default/videos/1790655742560-6170f399-0862-4616-9869-f254f102feb3.mp4';
+
+const ASVERA_3D_CAROUSEL_ITEMS: CarouselClothingItem[] = [
+  {
+    id: 'car-coastal-tee',
+    src: dropCoastalTee,
+    title: 'Coastal Tee',
+    subtitle: '280 GSM Combed Cotton',
+    price: '₹1,999',
+  },
+  {
+    id: 'car-signature-hoodie',
+    src: dropSignatureHoodie,
+    title: 'Signature Hoodie',
+    subtitle: '480 GSM Heavyweight Terry',
+    price: '₹3,499',
+  },
+  {
+    id: 'car-utility-cargo',
+    src: dropUtilityCargo,
+    title: 'Utility Cargo',
+    subtitle: '340 GSM Ripstop Twill',
+    price: '₹2,999',
+  },
+  {
+    id: 'car-essentials-sweatshirt',
+    src: dropEssentialsSweatshirt,
+    title: 'Essentials Sweatshirt',
+    subtitle: '420 GSM Brushed Fleece',
+    price: '₹2,499',
+  },
+  {
+    id: 'car-vibe-tshirts',
+    src: vibeTshirts,
+    title: 'Maroon Oversized Tee',
+    subtitle: 'Soft. Breathable. Everyday.',
+    price: '₹2,199',
+  },
+  {
+    id: 'car-vibe-hoodies',
+    src: vibeHoodies,
+    title: 'Archival Graphic Hoodie',
+    subtitle: 'Warmth with attitude.',
+    price: '₹3,899',
+  },
+  {
+    id: 'car-vibe-bottoms',
+    src: vibeBottoms,
+    title: 'Olive Coastal Cargo',
+    subtitle: 'Comfort meets style.',
+    price: '₹3,199',
+  },
+  {
+    id: 'car-vibe-outerwear',
+    src: vibeOuterwear,
+    title: 'Noir Crest Hoodie',
+    subtitle: 'Built for every season.',
+    price: '₹4,299',
+  },
+];
 
 interface VibeCategory {
   id: string;
@@ -727,6 +787,21 @@ export default function App() {
           </div>
         </section>
       </div>
+
+      {/* =====================================================================
+          CONTINUOUS 3D SCROLLING CLOTHING CAROUSEL
+         ===================================================================== */}
+      <ClothingCarousel3D
+        defaultItems={ASVERA_3D_CAROUSEL_ITEMS}
+        onSelectItem={(item) =>
+          setLightboxImage({
+            id: item.id,
+            title: item.title,
+            caption: item.subtitle || 'ASVÉRA Archival Collection',
+            image: item.src,
+          })
+        }
+      />
 
       {/* =====================================================================
           SECTION 1: FEATURED COLLECTIONS — "EXPLORE THE VIBE"
